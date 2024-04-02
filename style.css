@@ -19,7 +19,7 @@ html {
 .W_city, .T_city, .description, .humidity, .wind{
     display: flex;
     justify-content: center;
-    font-size: 35px;
+    font-size: 40px;
 }
 
 .title {
