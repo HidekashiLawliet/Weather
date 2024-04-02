@@ -5,9 +5,9 @@ var wind = document.querySelector('.wind')
 var description = document.querySelector('.description')
 var refresh = document.querySelector('.refresh')
 
-// if you want to change the city you need to change the value below ↓
+// W_city += 'Bordeaux';
+
 var name = 'Talence';
-//-------------------------------------------------//
 
 refresh.addEventListener('click', function(){
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+name+'&appid=f5436b6a8bb258c06f5922c0752e2215&units=metric')
