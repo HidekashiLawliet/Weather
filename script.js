@@ -7,7 +7,7 @@ let description = document.querySelector('.description')
 let refresh = document.querySelector('.refresh')
 let cels = document.querySelector('.cels')
 let fahr = document.querySelector('.fahr')
-let temp
+let temp = 0;
 
 // To change the city you want, you can modify the variable below  //
 let city = 'Talence';
@@ -38,23 +38,21 @@ window.addEventListener("load", (event) => {
         let windValue = data['wind']['speed'];
         let humidityValue = data['main']['humidity'];
         let descriptionValue = data['weather']['0']['description'];
-        temp = T_cityValue;
         
         
         if (fahr.checked) {
-            temp = temp * 1.8 + 32;
-            temp =Math.round(temp * 100) / 100;
-            console.log(temp);
+            T_cityValue = T_cityValue * 1.8 + 32;
+            T_cityValue = Math.round(T_cityValue * 100) / 100;
+            T_city.innerHTML = T_cityValue + ' °F';
         } else {
-            temp = T_cityValue;
+            T_cityValue = T_cityValue;
+            T_city.innerHTML = T_cityValue + ' °C';
         }
-        T_city.innerHTML = temp;
         W_city.innerHTML = W_cityValue;
         humidity.innerHTML = humidityValue;
         wind.innerHTML = windValue;
         description.innerHTML = descriptionValue;
         
-        T_city.innerHTML += ' °C';
         wind.innerHTML += ' Km/h (wind speed)';
         humidity.innerHTML += ' % (humidity)';
     })
