@@ -5,6 +5,9 @@ let humidity = document.querySelector('.humidity')
 let wind = document.querySelector('.wind')
 let description = document.querySelector('.description')
 let refresh = document.querySelector('.refresh')
+let cels = document.querySelector('.cels')
+let fahr = document.querySelector('.fahr')
+let temp
 
 // To change the city you want, you can modify the variable below  //
 let city = 'Talence';
@@ -16,6 +19,16 @@ setInterval(function() {
 }, 300000);
 
 
+fahr.addEventListener('change', function() {
+    if (fahr.checked) {
+        location.reload();
+    }
+});
+cels.addEventListener('change', function() {
+    if (cels.checked) {
+        location.reload();
+    }
+});
 window.addEventListener("load", (event) => {
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=f5436b6a8bb258c06f5922c0752e2215&units=metric')
     .then(response => response.json())
@@ -25,9 +38,18 @@ window.addEventListener("load", (event) => {
         let windValue = data['wind']['speed'];
         let humidityValue = data['main']['humidity'];
         let descriptionValue = data['weather']['0']['description'];
+        temp = T_cityValue;
         
+        
+        if (fahr.checked) {
+            temp = temp * 1.8 + 32;
+            temp =Math.round(temp * 100) / 100;
+            console.log(temp);
+        } else {
+            temp = T_cityValue;
+        }
+        T_city.innerHTML = temp;
         W_city.innerHTML = W_cityValue;
-        T_city.innerHTML = T_cityValue;
         humidity.innerHTML = humidityValue;
         wind.innerHTML = windValue;
         description.innerHTML = descriptionValue;
