@@ -9,11 +9,17 @@ let refresh = document.querySelector('.refresh')
 // To change the city you want, you can modify the variable below  //
 let city = 'Talence';
 
+console.log("this page will automatically refresh every 5 minutes")
+
+setInterval(function() {
+    location.reload();
+}, 300000);
+
+
 window.addEventListener("load", (event) => {
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=f5436b6a8bb258c06f5922c0752e2215&units=metric')
     .then(response => response.json())
     .then(data => {
-        console.log(W_city)
         let W_cityValue = data['name'];
         let T_cityValue = data['main']['temp'];
         let windValue = data['wind']['speed'];
