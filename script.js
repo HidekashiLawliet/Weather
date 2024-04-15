@@ -8,6 +8,8 @@ let refresh = document.querySelector('.refresh')
 let cels = document.querySelector('.cels')
 let fahr = document.querySelector('.fahr')
 let temp = 0;
+let clock = document.querySelector('.clock')
+
 
 // To change the city you want, you can modify the variable below  //
 let city = 'Talence';
@@ -17,6 +19,7 @@ console.log("this page will automatically refresh every 5 minutes")
 setInterval(function() {
     location.reload();
 }, 300000);
+
 
 
 fahr.addEventListener('change', function() {
@@ -56,6 +59,15 @@ window.addEventListener("load", (event) => {
         wind.innerHTML += ' Km/h (wind speed)';
         humidity.innerHTML += ' % (humidity)';
     })
+    
+    setInterval(function() {
+        let date = new Date();
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+        console.log(hours + ':' + minutes + ':' + seconds);
+        clock.innerHTML = hours + ':' + minutes + ':' + seconds;
+    }, 1000);
 });
 
 
