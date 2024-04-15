@@ -20,18 +20,18 @@ setInterval(function() {
     location.reload();
 }, 300000);
 
-
-
 fahr.addEventListener('change', function() {
     if (fahr.checked) {
         location.reload();
     }
 });
+
 cels.addEventListener('change', function() {
     if (cels.checked) {
         location.reload();
     }
 });
+
 window.addEventListener("load", (event) => {
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=f5436b6a8bb258c06f5922c0752e2215&units=metric')
     .then(response => response.json())
@@ -59,16 +59,19 @@ window.addEventListener("load", (event) => {
         wind.innerHTML += ' Km/h (wind speed)';
         humidity.innerHTML += ' % (humidity)';
     })
-    
-    setInterval(function() {
-        let date = new Date();
-        let hours = date.getHours();
-        let minutes = date.getMinutes();
-        let seconds = date.getSeconds();
-        console.log(hours + ':' + minutes + ':' + seconds);
-        clock.innerHTML = hours + ':' + minutes + ':' + seconds;
-    }, 1000);
 });
 
 
+setInterval(function() {
+    upDate();
+}, 1000);
+
+function upDate() {
+    let date = new Date();
+    let hours = date.getHours().toString().padStart(2, '0');
+    let minutes = date.getMinutes().toString().padStart(2, '0');;
+    let seconds = date.getSeconds().toString().padStart(2, '0');;
+
+    clock.innerHTML = hours + ':' + minutes + ':' + seconds;
+}
 

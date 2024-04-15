@@ -1,6 +1,7 @@
 html {
     font-family: -apple-system, sans-serif ;
     background-image: url("resources/peakpx.jpg");
+    background-size: cover;
 }
 
 .weather_card{
@@ -49,6 +50,6 @@ html {
     align-items: center;
     color: aliceblue;
     font-size: 100px;
-    background-color: rgba(255, 255, 255, 0.103);
+    background-color: rgba(255, 255, 255, 0.158);
     backdrop-filter: blur(5px);
 }
