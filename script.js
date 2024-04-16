@@ -14,6 +14,17 @@ let clock = document.querySelector('.clock')
 // To change the city you want, you can modify the variable below  //
 let city = 'Talence';
 
+window.onload = function() {
+
+    var pageTitle = document.title;
+    var attentionMessage = 'You are missing the weather!';
+    
+    document.addEventListener('visibilitychange', function() {
+        console.log(document.hidden);
+        document.title = document.hidden?  `${attentionMessage} \u{1F622}` : pageTitle;  
+    });
+}
+
 console.log("this page will automatically refresh every 5 minutes")
 
 setInterval(function() {
