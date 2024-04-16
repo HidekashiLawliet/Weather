@@ -15,12 +15,10 @@ let clock = document.querySelector('.clock')
 let city = 'Talence';
 
 window.onload = function() {
-
     var pageTitle = document.title;
     var attentionMessage = 'You are missing the weather!';
     
     document.addEventListener('visibilitychange', function() {
-        console.log(document.hidden);
         document.title = document.hidden?  `${attentionMessage} \u{1F622}` : pageTitle;  
     });
 }
