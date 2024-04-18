@@ -4,7 +4,6 @@ let T_city = document.querySelector('.T_city')
 let humidity = document.querySelector('.humidity')
 let wind = document.querySelector('.wind')
 let description = document.querySelector('.description')
-// let refresh = document.querySelector('.refresh')
 let cels = document.querySelector('.cels')
 let fahr = document.querySelector('.fahr')
 let clock = document.querySelector('.clock')
@@ -15,7 +14,7 @@ let city = "Talence"
 window.onload = function() {  
     var pageTitle = document.title;
     var attentionMessage = 'You are missing the weather!';
-    
+
     document.addEventListener('visibilitychange', function() {
         document.title = document.hidden?  `${attentionMessage} \u{1F622}` : pageTitle;  
     });
@@ -25,9 +24,11 @@ window.onload = function() {
 
 // * change temp to Fahrenheit or Celsius 
 console.log("this page will automatically refresh every 5 minutes")
+
 setInterval(function() {
     location.reload();
-}, 300000);
+    console.log('refresh after 1 hour')
+}, 3600000);
 
 
 fahr.addEventListener('change', function() {
@@ -44,7 +45,7 @@ cels.addEventListener('change', function() {
 // * * * * * * * * * * * * * * * *
 
 window.addEventListener("load", (event) => {
-    fetch("./settings.json")
+    fetch("./conf.json")
         .then(response => response.json())
         .then(data => {
             if (data.city === "") {
