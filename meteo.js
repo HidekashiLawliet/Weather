@@ -30,7 +30,6 @@ setInterval(function() {
     console.log('refresh after 1 hour')
 }, 3600000);
 
-
 fahr.addEventListener('change', function() {
     if (fahr.checked) {
         location.reload();
@@ -52,8 +51,8 @@ window.addEventListener("load", (event) => {
                 data.city = "Talence";
                 console.error("Please set a city in the settings.json file");
             }
-            city = data.city;
-            return city;
+        city = data.city;
+        return city;
     })
 
     .then( city =>
